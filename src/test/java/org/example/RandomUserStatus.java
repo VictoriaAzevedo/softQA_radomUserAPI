@@ -16,50 +16,50 @@ public class RandomUserStatus
     public void retornarListaVinteUsuarios()
     {
         given().
-                param("results", 20).
-                when().
-                get(urlBase).
-                then().
-                statusCode(HttpStatus.SC_OK);
+            param("results", 20).
+        when().
+            get(urlBase).
+        then().
+            statusCode(HttpStatus.SC_OK);
     }
 
     @Test
     public void retornarUsuarioNacionalidadeBrasileiro() {
         given().
-                param("nat", "BR").
-                when().
-                get(urlBase).
-                then().
-                statusCode(HttpStatus.SC_OK);
+            param("nat", "BR").
+        when().
+            get(urlBase).
+        then().
+            statusCode(HttpStatus.SC_OK);
     }
 
     @Test
     public void retornarUsuarioNacionalidadeDefinida() {
         given().
-                param("nat", "br,us,es,ca").
-                when().
-                get(urlBase).
-                then().
-                statusCode(HttpStatus.SC_OK);
+            param("nat", "br,us,es,ca").
+        when().
+            get(urlBase).
+        then().
+            statusCode(HttpStatus.SC_OK);
     }
 
     @Test
     public void retornarUsuarioPaginaDefinida() {
         given().
-                param("page", "3").
-                when().
-                get(urlBase).
-                then().
-                statusCode(HttpStatus.SC_OK);
+            param("page", "3").
+        when().
+            get(urlBase).
+        then().
+            statusCode(HttpStatus.SC_OK);
     }
 
     @Test
     public void retornarApenasDadosNomeEmail() {
         given().
-                param("inc", "name, email").
-                when().
-                get(urlBase).
-                then().
-                statusCode(HttpStatus.SC_OK);
+            param("inc", "name, email").
+        when().
+            get(urlBase).
+        then().
+            statusCode(HttpStatus.SC_OK);
     }
 }

@@ -14,31 +14,31 @@ public class RandomUserRN {
     public void retornarListaVinteUsuarios()
     {
         given().
-                param("results", 20).
-                when().
-                get(urlBase).
-                then().
-                body("info.results", is(20));
+            param("results", 20).
+        when().
+            get(urlBase).
+        then().
+            body("info.results", is(20));
     }
 
     @Test
     public void retornarUsuarioNacionalidadeBrasileiro() {
         given().
-                param("nat", "BR").
-                when().
-                get(urlBase).
-                then().
-                body("results[0].nat", is("BR"));
+            param("nat", "BR").
+        when().
+            get(urlBase).
+        then().
+            body("results[0].nat", is("BR"));
     }
 
     @Test
     public void retornarUsuarioNacionalidadeDefinida() {
         given().
-                param("nat", "br,us,es,ca").
-                when().
-                get(urlBase).
-                then().
-                body("results[0].nat", anyOf(equalToIgnoringCase("br"),
+            param("nat", "br,us,es,ca").
+        when().
+            get(urlBase).
+        then().
+            body("results[0].nat", anyOf(equalToIgnoringCase("br"),
                         equalToIgnoringCase("es"), equalToIgnoringCase("ca"),
                         equalToIgnoringCase("us")));
     }
@@ -46,22 +46,22 @@ public class RandomUserRN {
     @Test
     public void retornarUsuarioPaginaDefinida() {
         given().
-                param("page", "3").
-                when().
-                get(urlBase).
-                then().
-                body("info.page", is(3));
+            param("page", "3").
+        when().
+            get(urlBase).
+        then().
+            body("info.page", is(3));
     }
 
     @Test
     public void retornarApenasDadosNomeEmail() {
         given().
-                param("inc", "name, email").
-                when().
-                get(urlBase).
-                then().
-                body("results[0]", hasKey("name")).
-                body("results[0]", hasKey("email")).
-                body("results[0]", not(hasKey("location")));
+            param("inc", "name, email").
+        when().
+            get(urlBase).
+        then().
+            body("results[0]", hasKey("name")).
+            body("results[0]", hasKey("email")).
+            body("results[0]", not(hasKey("location")));
     }
 }
